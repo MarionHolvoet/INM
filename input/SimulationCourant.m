@@ -2,21 +2,27 @@ clc; close all;
 clear all;
 
 global IHC stim Vstep STIM
-addpath('input/library2019F')
+addpath('library2019F')
 
 police=14;
 epaisseurTrait=1.2;
 
 %% commande
-t0=evalin('base','temps0'); t1=evalin('base','temps1'); t2=evalin('base','temps2'); t3=evalin('base','temps3'); 
-stim.T=[t0 t1 t2 t3];
-% stim.T=[0 0.2 0.6 0.8]
-stim.VREPOS=evalin('base','Vrepos'*1e-3);
-stim.VSTEP=evalin('base','Vstim'*1e-3);
-stim.Fe=evalin('base','fe');
-% stim.VREPOS=[-60]*1e-3;
-% stim.VSTEP=[10]*1e-3';
-% stim.Fe=200000;
+
+% GUI to enter 4 values t0, t1, t2 & t3
+%t0=evalin('base','temps0'); t1=evalin('base','temps1'); t2=evalin('base','temps2'); t3=evalin('base','temps3'); 
+%stim.T=[t0 t1 t2 t3];
+% hard coding the 4 values 
+stim.T=[0.0 0.2 0.6 0.8]
+
+% stim.VREPOS=evalin('base','Vrepos'*1e-3);
+% stim.VSTEP=evalin('base','Vstim'*1e-3);
+% stim.Fe=evalin('base','fe');
+
+stim.VREPOS=[-60]*1e-3;
+stim.VSTEP=[10]*1e-3';
+stim.Fe=200000;
+
 Te=1/stim.Fe;
 t=stim.T(1):Te:stim.T(end);
 F0=1/stim.T(4);
