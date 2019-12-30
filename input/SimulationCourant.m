@@ -2,7 +2,7 @@ clc; close all;
 clear all;
 
 global IHC stim Vstep STIM
-addpath('C:\Users\holvo\OneDrive\Documents\Projet INM\PourMarion-20191129T143556Z-001\PourMarion\MaLibrairie2019F')
+addpath('input/library2019F')
 
 police=14;
 epaisseurTrait=1.2;
@@ -23,7 +23,7 @@ F0=1/stim.T(4);
 phase=(stim.T(2)-stim.T(1))*2*pi/stim.T(4);
 dutyCycle=100*(stim.T(3)-stim.T(2))/stim.T(4);
 
-%% paramètres du modèle de CCI
+%% paramï¿½tres du modï¿½le de CCI
 IHC.ICA.E=0.0429; % en Volt
 IHC.ICA.g=2.6200e-009; % en Siemens
 IHC.ICA.xinf.demie=-0.0371; % en Volt
@@ -35,12 +35,12 @@ IHC.ICA.taux.k1= 0.0155; % en Volt
 IHC.ICA.taux.k2= 0.0870; % en Volt
 
 
-%% courbes d'activation et de cinétique
+%% courbes d'activation et de cinï¿½tique
 Vm=[-100:5:50]*1e-3;
 cinf=sigmoide(IHC.ICA.xinf,Vm); % courbe d'activation
-ctau=cinetique2(IHC.ICA.taux, Vm); % cinétique d'activation
+ctau=cinetique2(IHC.ICA.taux, Vm); % cinï¿½tique d'activation
 
-%% Affiche des courbes de la courbe d'activation et de cinétique
+%% Affiche des courbes de la courbe d'activation et de cinï¿½tique
 figure('position',[600 80 1000 400],'paperpositionmode','auto');
 axes('position',[0.1 0.17 0.35 0.75]);
 set(gca,'fontsize',police,'linewidth',epaisseurTrait)
